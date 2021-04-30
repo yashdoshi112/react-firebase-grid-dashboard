@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import './firebase/config';
+import Signup from './pages/Signup';
+import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
+import Header from './Header';
+import {UserContext, UserProvider} from './firebase/UserProvider';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
+import ProfileRedirect from './router/ProfileRedirect';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+    <BrowserRouter>
+        <Header>
+
+        </Header>
+        <div className="app">
+            <div className="ui grid container">
+                <Switch>
+                    <ProfileRedirect exact path="/signup" component={Signup} />
+                    <ProfileRedirect exact path="/login" component={Login} />
+                    <Route exact path="/profile/:id" component={Profile} />
+                    <Route exact path="/">
+                        <Redirect to="/login"/>
+                    </Route>
+                </Switch>
+            </div>
+        </div>
+    </BrowserRouter>
+    </UserProvider>
   );
 }
 
