@@ -10,6 +10,7 @@ function Header() {
 
   const logoutUser = async () => {
     await logout();
+    console.log("logout", user)
     history.push('/login')
   }
   return (

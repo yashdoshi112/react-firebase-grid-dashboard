@@ -11,7 +11,7 @@ export const UserProvider = (props) => {
             setSession({loading: false, user})
         })
 
-        return () => unsubscribe()
+        return  unsubscribe
     }, [])
 
     return (

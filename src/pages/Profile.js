@@ -3,9 +3,10 @@ import {useSession} from '../firebase/UserProvider';
 
 const Profile = () => {
     const {user} = useSession()
+    console.log("profile", user)
 
     if(!user) {
-        return null
+        
     }
 
     return (

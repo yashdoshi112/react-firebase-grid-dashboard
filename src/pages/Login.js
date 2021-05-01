@@ -13,6 +13,7 @@ function Login(props) {
       setLoading(true)
       try {
           user = await login(data)
+          console.log("login", user)
           reset()
       } catch(error) {
           console.log(error)

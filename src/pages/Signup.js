@@ -13,6 +13,7 @@ function Signup(props) {
       setLoading(true)
       try {
           newUser = await signup(data)
+          console.log("profile", newUser)
           reset()
       } catch(error) {
           console.log(error)
